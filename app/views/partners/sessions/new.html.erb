@@ -29,6 +29,13 @@
           <%= link_to "sur cette page", new_user_session_path %>.
         </p>
 
+        <div class="border rounded p-2 my-2">
+          <p>Connexion avec</p>
+          <p class="mb-0">
+            <%= link_to 'DEV PRO SANTE CONNECT', partner_pro_sante_connect_omniauth_authorize_path, class:"btn btn-danger", method: :post %>
+          </p>
+        </div>
+
         <%= simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
           <%= f.input :email, autocomplete: "off", autofocus: true, required: true, id: "inputEmail", placeholder: "Adresse email" %>
           <%= f.input :password, autocomplete: "off", required: true, id: "inputPassword", placeholder: "Mot de passe" %>

@@ -81,7 +81,8 @@ Rails.application.routes.draw do
     path_names: {sign_in: "login", sign_out: "logout"},
     skip: %i[registrations],
     controllers: {
-      confirmations: "confirmations"
+      confirmations: "confirmations",
+      omniauth_callbacks: "partners/omniauth_callbacks"
     }
 
   ####################
@@ -96,7 +97,7 @@ Rails.application.routes.draw do
   ## Partners
   resources :partners, only: [:new, :create]
   resource :partners, only: [:show, :update, :destroy]
-  get "/partenaires", to: redirect("/partenaires/inscription", status: 302)
+  get "/partenaires", to: redirect("/partenaires/inscription", status: 302), as: :partenaires # Soon here we will put a landing page
   get "/partenaires/inscription" => "partners#new", :as => :partenaires_inscription
   get "/partenaires/faq" => "pages#faq_pro", :as => :partenaires_faq
 
